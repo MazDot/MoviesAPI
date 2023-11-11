@@ -1,0 +1,22 @@
+﻿using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace MoviesAPI.Filters
+{
+    public class MyExceptionFilter : ExceptionFilterAttribute
+    {
+        private readonly ILogger<MyExceptionFilter> logger;
+
+        public MyExceptionFilter(ILogger<MyExceptionFilter> _logger) 
+        {
+            logger = _logger;
+        }
+
+        public override void OnException (ExceptionContext context)
+        {
+            logger.LogError(context.Exception, context.Exception.Message);
+
+            base.OnException(context);
+        }
+
+    }
+}
