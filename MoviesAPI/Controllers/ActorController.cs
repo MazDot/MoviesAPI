@@ -41,7 +41,7 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<int>> EditActor(int id, [FromBody] ActorDto dto)
+        public async Task<ActionResult<int>> EditActor(int id, [FromForm] ActorDto dto)
         {
             try
             {

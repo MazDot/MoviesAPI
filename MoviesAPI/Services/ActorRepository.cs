@@ -41,7 +41,9 @@ namespace MoviesAPI.Services
 
         public async Task<Actor> GetActorById (int id)
         {
-            return await context.Actors.FirstOrDefaultAsync(x => x.Id == id);
+            var actor = await context.Actors.FirstOrDefaultAsync(x => x.Id == id);
+            actor.Picture = null;
+            return actor;
         }
 
         public async Task EditActor (int id, ActorDto dto)
@@ -51,13 +53,12 @@ namespace MoviesAPI.Services
             {
                 throw new Exception();
             }
-            context.Actors.Update(new Actor { 
-                Id = id, 
-                Biography = dto.Biography, 
-                DateOfBirth = dto.DateOfBirth,
-                Picture = dto.Picture.FileName,
-                Name = dto.Name
-            });
+            actor.DateOfBirth= dto.DateOfBirth;
+            actor.Picture = dto.Picture.FileName;
+            actor.Biography = dto.Biography;
+            actor.Name = dto.Name;
+
+            context.Actors.Update(actor);
             await context.SaveChangesAsync();
         }
 
