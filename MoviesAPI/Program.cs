@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(options => options.Filters.Add(typeof(MyExceptionFilter)));
 builder.Services.AddResponseCaching();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+builder.Services.AddScoped<IActorRepository, ActorRepository>();
 
 //filters
 //builder.Services.AddTransient<MyActionFilter>();
