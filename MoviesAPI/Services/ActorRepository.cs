@@ -54,7 +54,8 @@ namespace MoviesAPI.Services
             context.Actors.Update(new Actor { 
                 Id = id, 
                 Biography = dto.Biography, 
-                DateOfBirth = dto.DateOfBirth, 
+                DateOfBirth = dto.DateOfBirth,
+                Picture = dto.Picture.FileName,
                 Name = dto.Name
             });
             await context.SaveChangesAsync();

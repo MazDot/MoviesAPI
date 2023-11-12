@@ -45,7 +45,7 @@ namespace MoviesAPI.Controllers
         {
             try
             {
-                await repository.AddActor(dto);
+                await repository.EditActor(id, dto);
                 return NoContent();
             }
             catch (Exception)
