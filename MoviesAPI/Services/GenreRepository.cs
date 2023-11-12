@@ -32,5 +32,17 @@ namespace MoviesAPI.Services
             await context.SaveChangesAsync();
             return g.Entity.Id;
         }
+        public async Task<int> EditGenre (int id, GenreDto gen)
+        {
+            var g = await context.Genres.FirstOrDefaultAsync(gen => gen.Id == id);
+            if (g != null)
+            {
+                g.Name = gen.Name;
+                context.Genres.Update(g);
+                await context.SaveChangesAsync();
+                return g.Id;
+            }
+            return 0;
+        }
     }
 }

@@ -29,7 +29,7 @@ namespace MoviesAPI.Controllers
             return await _repository.GetAllGenres();
         }
 
-        [HttpGet("/{id}")]
+        [HttpGet("{id}")]
         //[ResponseCache(Duration = 60)]
         public async Task<ActionResult<Genre>> GetById(int id)
         {
@@ -49,10 +49,10 @@ namespace MoviesAPI.Controllers
             return await _repository.AddGenre(genre);
         }
 
-        [HttpPut]
-        public ActionResult Put([FromBody] GenreDto genre)
+        [HttpPut("{id}")]
+        public async Task<ActionResult<int>> Put(int id, [FromBody] GenreDto genre)
         {
-            return NoContent();
+            return await _repository.EditGenre(id, genre);
         }
 
         [HttpDelete]
