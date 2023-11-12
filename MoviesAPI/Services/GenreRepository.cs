@@ -44,5 +44,16 @@ namespace MoviesAPI.Services
             }
             return 0;
         }
+
+        public async Task DeleteGenre (int id)
+        {
+            var g = await context.Genres.FirstOrDefaultAsync(gen => gen.Id == id);
+            if(g == null)
+            {
+                throw new Exception();
+            }
+            context.Genres.Remove(g);
+            await context.SaveChangesAsync();
+        }
     }
 }

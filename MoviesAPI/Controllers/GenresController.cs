@@ -55,10 +55,18 @@ namespace MoviesAPI.Controllers
             return await _repository.EditGenre(id, genre);
         }
 
-        [HttpDelete]
-        public ActionResult Delete()
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
         {
-            return NoContent();
+            try
+            {
+                await _repository.DeleteGenre(id);
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return NotFound();
+            }
         }
 
     }
