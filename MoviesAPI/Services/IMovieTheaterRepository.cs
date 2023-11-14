@@ -8,7 +8,7 @@ namespace MoviesAPI.Services
         Task<int> Add(MovieTheaterDto dto);
         Task Delete(int id);
         Task Edit(int id, MovieTheaterDto dto);
-        Task<List<MovieTheater>> GetAllMovieTheaters();
-        Task<MovieTheater> GetById(int id);
+        Task<List<MovieTheaterOutputDto>> GetAllMovieTheaters();
+        Task<MovieTheaterOutputDto> GetById(int id);
     }
 }

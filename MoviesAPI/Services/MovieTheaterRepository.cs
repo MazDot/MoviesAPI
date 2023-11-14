@@ -17,14 +17,16 @@ namespace MoviesAPI.Services
             this.mapper = mapper;
         }
 
-        public async Task<List<MovieTheater>> GetAllMovieTheaters()
+        public async Task<List<MovieTheaterOutputDto>> GetAllMovieTheaters()
         {
-            return await context.MovieTheaters.ToListAsync();
+            var result = await context.MovieTheaters.ToListAsync();
+            return mapper.Map<List<MovieTheaterOutputDto>>(result);
         }
 
-        public async Task<MovieTheater> GetById(int id)
+        public async Task<MovieTheaterOutputDto> GetById(int id)
         {
-            return await context.MovieTheaters.SingleOrDefaultAsync(x => x.Id == id);
+            var theater = await context.MovieTheaters.SingleOrDefaultAsync(x => x.Id == id);
+            return mapper.Map<MovieTheaterOutputDto>(theater);
         }
 
         public async Task<int> Add(MovieTheaterDto dto)

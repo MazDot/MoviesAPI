@@ -15,6 +15,9 @@ namespace MoviesAPI.Helpers
             CreateMap<MovieTheaterDto, MovieTheater>()
                 .ForMember(x => x.Location, x => x.MapFrom(dto => 
                 geometryFactory.CreatePoint(new Coordinate(dto.Longitude, dto.Latitude))));
+            CreateMap<MovieTheater, MovieTheaterOutputDto>()
+                .ForMember(x => x.Latitude, x => x.MapFrom(dto => dto.Location.Y))
+                .ForMember(x => x.Longitude, x => x.MapFrom(dto => dto.Location.X));
         }
     }
 }

@@ -17,13 +17,13 @@ namespace MoviesAPI.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<MovieTheater>> GetById (int id)
+        public async Task<ActionResult<MovieTheaterOutputDto>> GetById (int id)
         {
             return await repository.GetById(id);
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<MovieTheater>>> Get ()
+        public async Task<ActionResult<List<MovieTheaterOutputDto>>> Get ()
         {
             return await repository.GetAllMovieTheaters();
         }
