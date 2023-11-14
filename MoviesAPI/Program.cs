@@ -18,6 +18,7 @@ builder.Services.AddResponseCaching();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 builder.Services.AddScoped<IActorRepository, ActorRepository>();
 builder.Services.AddScoped<IMovieTheaterRepository, MovieTheaterRepository>();
+builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 
 //filters
 //builder.Services.AddTransient<MyActionFilter>();
